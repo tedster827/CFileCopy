@@ -117,3 +117,32 @@ int main(int argc, char const *argv[]) {
   // Exit Call 0
   return 0;
 }
+
+
+/*
+STrace Output:
+
+[willi352@empress File Copier]$ strace -e open ./filecpy
+open("/opt/rh/devtoolset-1.1/root/usr/lib/tls/i686/sse2/libc.so.6", O_RDONLY) = -1 ENOENT (No such file or directory)
+open("/opt/rh/devtoolset-1.1/root/usr/lib/tls/i686/libc.so.6", O_RDONLY) = -1 ENOENT (No such file or directory)
+open("/opt/rh/devtoolset-1.1/root/usr/lib/tls/sse2/libc.so.6", O_RDONLY) = -1 ENOENT (No such file or directory)
+open("/opt/rh/devtoolset-1.1/root/usr/lib/tls/libc.so.6", O_RDONLY) = -1 ENOENT (No such file or directory)
+open("/opt/rh/devtoolset-1.1/root/usr/lib/i686/sse2/libc.so.6", O_RDONLY) = -1 ENOENT (No such file or directory)
+open("/opt/rh/devtoolset-1.1/root/usr/lib/i686/libc.so.6", O_RDONLY) = -1 ENOENT (No such file or directory)
+open("/opt/rh/devtoolset-1.1/root/usr/lib/sse2/libc.so.6", O_RDONLY) = -1 ENOENT (No such file or directory)
+open("/opt/rh/devtoolset-1.1/root/usr/lib/libc.so.6", O_RDONLY) = -1 ENOENT (No such file or directory)
+open("/etc/ld.so.cache", O_RDONLY)      = 3
+open("/lib/libc.so.6", O_RDONLY)        = 3
+Invaild number of execution arguments!
+[willi352@empress File Copier]$ strace -e read ./filecpy
+read(3, "\177ELF\1\1\1\0\0\0\0\0\0\0\0\0\3\0\3\0\1\0\0\0 \260[\0004\0\0\0"..., 512) = 512
+Invaild number of execution arguments!
+[willi352@empress File Copier]$ strace -e close ./filecpy
+close(3)                                = 0
+close(3)                                = 0
+Invaild number of execution arguments!
+[willi352@empress File Copier]$ strace -e write ./filecpy
+write(1, "Invaild number of execution argu"..., 39Invaild number of execution arguments!
+) = 39
+[willi352@empress File Copier]$
+*/
